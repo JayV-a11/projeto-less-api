@@ -1,8 +1,10 @@
 //routes
 import example from './routes/example.js';
 import costumerRoutes from './routes/costumerRoutes.js';
+import booksRoutes from './routes/booksRoutes.js';
 import addressRoutes from './routes/addressRoutes.js';
 import cardRoutes from './routes/cardRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 
 import express from 'express';
 import cors from 'cors';
@@ -27,7 +29,9 @@ class RouterController {
     this.express.use(`/`, example);
     this.express.use(`/`, costumerRoutes);
     this.express.use(`/`, addressRoutes);
+    this.express.use(`/`, booksRoutes);
     this.express.use(`/`, cardRoutes);
+    this.express.use(`/`, cartRoutes);
   }
 }
 

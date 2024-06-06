@@ -1,5 +1,5 @@
-export default class IAddressService {
+export default class IBookService {
     constructor () {
-        if (!this.createAddress) throw new Error(`Method creatCostumer not implemented in ${this.constructor.name})`);
+        if (!this.createBook) throw new Error(`Method creatCard not implemented in ${this.constructor.name})`);
     }
 }
