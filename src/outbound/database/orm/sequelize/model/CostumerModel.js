@@ -17,20 +17,46 @@ export default class CostumerModel extends AbstractModel {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
+                    last_name: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
                     email: {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
+                    birthdate: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
+                    cpf: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
+                    phone: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
+                    password: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
+                    ranking: {
+                        type: DataTypes.INTEGER,
+                        allowNull: false
+                    },
                     inactive: {
                         type: DataTypes.BOOLEAN,
+                        allowNull: false,
+                        defaultValue: false
                     },
-                    createdAt: {
-                        type: DataTypes.DATE
+                    created_at: {
+                        type: DataTypes.DATE,
                     },
-                    updatedAt: {
-                        type: DataTypes.DATE
+                    updated_at: {
+                        type: DataTypes.DATE,
                     }
-                }, 
+                },
                 options: {
                     modelName: 'Customer',
                     tableName: 'Customers',
@@ -40,4 +66,3 @@ export default class CostumerModel extends AbstractModel {
         );
     }
 }
-

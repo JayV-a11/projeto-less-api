@@ -12,5 +12,6 @@ router.use(middleware);
 router.get('/costumer', new CostumerController().findAll);
 router.post('/costumer', new CostumerController().create);
 router.patch('/costumer', new CostumerController().update);
+router.patch('/costumer/inactivate', new CostumerController().inactivate);
 
 export default router;

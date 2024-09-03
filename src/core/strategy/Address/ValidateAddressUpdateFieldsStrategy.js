@@ -2,7 +2,7 @@ import AbstractStrategy from '../AbstractStrategy.js';
 import Address from '../../domain/Address.js';
 import Result from '../../util/Result.js';
 
-export default class ValidateAddressFieldsStrategy extends AbstractStrategy {
+export default class ValidateAddressUpdateFieldsStrategy extends AbstractStrategy {
     constructor({
         result = new Result()
     } = {}) {
@@ -14,6 +14,11 @@ export default class ValidateAddressFieldsStrategy extends AbstractStrategy {
         // Verifica se a entidade recebida é uma instância de Address
         if (!typeof address === new Address()) {
             result.error.push('Entidade recebida não é um endereço!');
+        }
+
+         // Valida o campo "customer_id"
+         if (!address.id || address.id.length === 0) {
+            result.error.push('O campo "id" é obrigatório!');
         }
 
         // Valida o campo "customer_id"

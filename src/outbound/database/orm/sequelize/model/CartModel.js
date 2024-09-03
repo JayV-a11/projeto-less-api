@@ -27,7 +27,7 @@ export default class CartModel extends AbstractModel {
                 }, 
                 options: {
                     modelName: 'Cart',
-                    tableName: 'Cart',
+                    tableName: 'Carts',
                     underscored: true
                 }
             }

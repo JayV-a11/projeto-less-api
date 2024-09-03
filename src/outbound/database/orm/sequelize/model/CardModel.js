@@ -18,32 +18,40 @@ export default class CardModel extends AbstractModel {
                         type: DataTypes.UUID,
                         allowNull: false
                     },
-                    number: {
+                    numero_cartao: {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
-                    titular: {
+                    nome_cartao: {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
-                    expiration: {
+                    validade: {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
-                    main: {
+                    bandeira: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
+                    codigo_seguranca: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
+                    preferencial: {
                         type: DataTypes.BOOLEAN,
                         allowNull: false
                     },
-                    createdAt: {
-                        type: DataTypes.DATE
+                    created_at: {
+                        type: DataTypes.DATE,
                     },
-                    updatedAt: {
-                        type: DataTypes.DATE
+                    updated_at: {
+                        type: DataTypes.DATE,
                     }
-                }, 
+                },
                 options: {
                     modelName: 'Card',
-                    tableName: 'Card',
+                    tableName: 'Cards',
                     underscored: true
                 }
             }
@@ -54,4 +62,3 @@ export default class CardModel extends AbstractModel {
         this.belongsTo(CostumerModel, { foreignKey: 'customer_id', as: 'customer' });
     }
 }
-

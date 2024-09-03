@@ -4,11 +4,11 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     queryInterface.addConstraint('Transactions', {
-      fields: ['card_id'],
+      fields: ['delivery_address_id'],
       type: 'foreign key',
-      name: 'transaction_card_association',
+      name: 'transaction_address_association',
       references: {
-        table: 'Cards',
+        table: 'Adresses',
         field: 'id'
       }
     })
@@ -16,11 +16,11 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     queryInterface.removeConstraint('Transactions', {
-      fields: ['card_id'],
+      fields: ['delivery_address_id'],
       type: 'foreign key',
-      name: 'transaction_card_association',
+      name: 'transaction_address_association',
       references: {
-        table: 'Cards',
+        table: 'Adresses',
         field: 'id'
       }
     })

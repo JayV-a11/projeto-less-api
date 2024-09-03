@@ -10,6 +10,8 @@ const middleware = (req, res, next) => {
 router.use(middleware);
 
 router.post('/card', new CardController().create);
+router.patch('/card', new CardController().update);
+router.delete('/card', new CardController().delete);
 router.get('/card', new CardController().findByCostumer);
 
 export default router;

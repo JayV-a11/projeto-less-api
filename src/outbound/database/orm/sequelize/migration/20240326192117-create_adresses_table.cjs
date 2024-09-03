@@ -14,11 +14,15 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false,
       },
-      cep: {
+      tipo_residencia: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      rua: {
+      tipo_logradouro: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      logradouro: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -30,6 +34,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      cep: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       cidade: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -38,9 +46,17 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      complemento: {
+      pais: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      observacoes: {
         type: Sequelize.STRING,
         allowNull: true,
+      },
+      tipo_endereco: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       created_at: {
         type: "TIMESTAMP",

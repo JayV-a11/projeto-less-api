@@ -7,6 +7,8 @@ export default class CardService extends ICardService {
   constructor({ cardRepository = null } = {}) {
     super();
     this.createCard = this.createCard.bind(this);
+    this.updateCard = this.updateCard.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
     this.cardRepository = new CardRepository();
     this.cardMapper = new CardMapper();
     this.cardFilterMapper = new CardFilterMapper();
@@ -14,6 +16,16 @@ export default class CardService extends ICardService {
 
   async createCard(card) {
     const cardModel = await this.cardRepository.save(card);
+    return this.cardMapper.adapt(cardModel);
+  }
+
+  async updateCard(card) {
+    const cardModel = await this.cardRepository.update(card);
+    return this.cardMapper.adapt(cardModel);
+  }
+  
+  async deleteCard(card) {
+    const cardModel = await this.cardRepository.delete(card);
     return this.cardMapper.adapt(cardModel);
   }
 

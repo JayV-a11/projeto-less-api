@@ -10,6 +10,8 @@ const middleware = (req, res, next) => {
 router.use(middleware);
 
 router.post('/address', new AddressController().create);
+router.patch('/address', new AddressController().update);
+router.delete('/address', new AddressController().delete);
 router.get('/address', new AddressController().findByCostumer);
 
 export default router;

@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    queryInterface.addConstraint('Card', {
+    queryInterface.addConstraint('Cards', {
       fields: ['customer_id'],
       type: 'foreign key',
       name: 'card_customer_association',
@@ -15,7 +15,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    queryInterface.removeConstraint('Card', {
+    queryInterface.removeConstraint('Cards', {
       fields: ['customer_id'],
       type: 'foreign key',
       name: 'card_customer_association',

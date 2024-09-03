@@ -18,11 +18,15 @@ export default class AddressModel extends AbstractModel {
                         type: DataTypes.UUID,
                         allowNull: false
                     },
-                    cep: {
+                    tipo_residencia: {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
-                    rua: {
+                    tipo_logradouro: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
+                    logradouro: {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
@@ -34,6 +38,10 @@ export default class AddressModel extends AbstractModel {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
+                    cep: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
                     cidade: {
                         type: DataTypes.STRING,
                         allowNull: false
@@ -42,17 +50,25 @@ export default class AddressModel extends AbstractModel {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
-                    complemento: {
+                    pais: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
+                    observacoes: {
                         type: DataTypes.STRING,
                         allowNull: true
                     },
-                    createdAt: {
-                        type: DataTypes.DATE
+                    tipo_endereco: {
+                        type: DataTypes.STRING,
+                        allowNull: false
                     },
-                    updatedAt: {
-                        type: DataTypes.DATE
+                    created_at: {
+                        type: DataTypes.DATE,
+                    },
+                    updated_at: {
+                        type: DataTypes.DATE,
                     }
-                }, 
+                },
                 options: {
                     modelName: 'Address',
                     tableName: 'Adresses',
@@ -66,4 +82,3 @@ export default class AddressModel extends AbstractModel {
         this.belongsTo(CostumerModel, { foreignKey: 'customer_id', as: 'customer' });
     }
 }
-

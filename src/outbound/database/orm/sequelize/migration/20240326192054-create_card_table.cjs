@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Card", {
+    await queryInterface.createTable("Cards", {
       id: {
         type: Sequelize.UUID,
         allowNull: false,
@@ -14,19 +14,27 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false,
       },
-      number: {
+      numero_cartao: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      titular: {
+      nome_cartao: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      expiration: {
+      validade: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      main: {
+      bandeira: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      codigo_seguranca: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      preferencial: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
@@ -43,6 +51,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Card");
+    await queryInterface.dropTable("Cards");
   },
 };

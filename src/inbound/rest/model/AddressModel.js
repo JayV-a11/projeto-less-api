@@ -1,27 +1,34 @@
 import AbstractModel from './AbstractModel.js';
 
 export default class AddressModel extends AbstractModel {
-    constructor ({
-        id = null,
-        customer_id = null,
-        cep = '',
-        rua = '',
-        numero = '',
-        bairro = '',
-        cidade = '',
-        estado = '',
-        complemento = '',
-    } = {}) {
-        super();
-        this.id = id;
-        this.customer_id = customer_id,
-        this.cep = cep;
-        this.rua = rua;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.complemento = complemento;
-    }
-
+  constructor({
+    id = null,
+    customer_id = null,
+    tipo_residencia = '',
+    tipo_logradouro = '',
+    logradouro = '',
+    numero = '',
+    bairro = '',
+    cep = '',
+    cidade = '',
+    estado = '',
+    pais = '',
+    observacoes = '',
+    tipo_endereco = '',
+  } = {}) {
+    super();
+    this.id = id;
+    this.customer_id = customer_id;
+    this.tipo_residencia = tipo_residencia;
+    this.tipo_logradouro = tipo_logradouro;
+    this.logradouro = logradouro;
+    this.numero = numero;
+    this.bairro = bairro;
+    this.cep = cep;
+    this.cidade = cidade;
+    this.estado = estado;
+    this.pais = pais;
+    this.observacoes = observacoes;
+    this.tipo_endereco = tipo_endereco;
+  }
 }

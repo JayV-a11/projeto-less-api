@@ -29,8 +29,8 @@ export default class BookModel extends AbstractModel {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
-                    edicao:{
-                        type: Sequelize.STRING,
+                    edicao: {
+                        type: DataTypes.STRING,
                         allowNull: false
                     },
                     inactive: {
