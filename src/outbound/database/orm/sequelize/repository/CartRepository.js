@@ -58,8 +58,6 @@ export default class CartRepository extends ICardRepository {
         },
       });
 
-      console.log(result)
-
       if (result === 0) {
         throw new Error("Nenhum cartão encontrado para excluir.");
       }

@@ -5,6 +5,7 @@ import booksRoutes from './routes/booksRoutes.js';
 import addressRoutes from './routes/addressRoutes.js';
 import cardRoutes from './routes/cardRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 import express from 'express';
 import cors from 'cors';
@@ -32,6 +33,7 @@ class RouterController {
     this.express.use(`/`, booksRoutes);
     this.express.use(`/`, cardRoutes);
     this.express.use(`/`, cartRoutes);
+    this.express.use(`/`, orderRoutes);
   }
 }
 
