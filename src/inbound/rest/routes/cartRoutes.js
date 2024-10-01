@@ -9,7 +9,11 @@ const middleware = (req, res, next) => {
 
 router.use(middleware);
 
-// router.post('/cart', new CartController().create);
-// router.get('/cart', new CartController().findByCostumer);
+router.post('/cart', new CartController().create);
+router.post('/cartItem', new CartController().addCartItem);
+router.patch('/cartItem', new CartController().updateCartItem);
+router.delete('/cartItem', new CartController().deleteCartItem);
+router.get('/cartItem', new CartController().findItemsByCart);
+router.get('/cart', new CartController().findByCostumer);
 
 export default router;

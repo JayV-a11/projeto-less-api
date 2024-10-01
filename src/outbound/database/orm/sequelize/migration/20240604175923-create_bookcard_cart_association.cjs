@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     queryInterface.addConstraint('Book_Cart', {
-      fields: ['cart_id'],
+      fields: ['book_id'],
       type: 'foreign key',
       name: 'bookcart_book_association',
       references: {
@@ -16,7 +16,7 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     queryInterface.removeConstraint('Book_Cart', {
-      fields: ['cart_id'],
+      fields: ['book_id'],
       type: 'foreign key',
       name: 'bookcart_book_association',
       references: {

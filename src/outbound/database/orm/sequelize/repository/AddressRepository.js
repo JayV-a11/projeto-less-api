@@ -79,19 +79,16 @@ export default class AddressRepository extends IAddressRepository {
 
   async delete(address) {
     try {
-      // Verifica se o ID é válido
       if (!address.id) {
         throw new Error("ID do endereço não fornecido.");
       }
 
-      // Executa a exclusão
       const result = await this.connection.destroy({
         where: {
           id: address.id,
         },
       });
 
-      // Verifica se a exclusão foi bem-sucedida
       if (result === 0) {
         throw new Error("Nenhum endereço encontrado para excluir.");
       }

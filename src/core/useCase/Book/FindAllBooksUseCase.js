@@ -17,7 +17,7 @@ export default class FindAllBooks extends AbstractUseCase {
         ]
     }
 
-    async findAllBoooks(filter) {
+    async findAllBooks(filter) {
         return await this.executeStrategies(filter, new Result());
     }
 }

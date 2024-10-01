@@ -62,7 +62,7 @@ export default class BookController extends AbstractController {
       const bookFilter = new BookFilter(req);
       const filter = this.bookFilterMapper.adapt(bookFilter);
 
-      const result = await this.findAllBooksUseCase.findAllBooks(filter);
+      const result = await this.findAllBookUseCase.findAllBooks(filter);
 
       const formattedResponseData = [];
 

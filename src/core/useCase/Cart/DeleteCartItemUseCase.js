@@ -1,21 +1,23 @@
 import AbstractUseCase from '../AbstractUseCase.js';
 import Result from '../../util/Result.js';
-import FindByCostumerStrategy from '../../strategy/Cart/findByCostumerStrategy.js';
 
-export default class FindAllByCostumersUseCase extends AbstractUseCase {
+//Strategies
+import DeleteCartItemStrategy from '../../strategy/Cart/DeleteCartItemStrategy.js';
+
+export default class DeleteCartItemUseCase extends AbstractUseCase {
     constructor({
         cartService = null
     } = {}) {
         super();
         this.cartService = cartService;
         this.strategies = [
-            new FindByCostumerStrategy({
+            new DeleteCartItemStrategy({
                 cartService: this.cartService
             }),
         ]
     }
 
-    async findByCostumer(filter) {
-        return await this.executeStrategies(filter, new Result());
+    async deleteItem(cart) {
+        return await this.executeStrategies(cart, new Result());
     }
 }
