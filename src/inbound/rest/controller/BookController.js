@@ -5,6 +5,7 @@ import BookMapper from '../model/mapper/BookMapper.js';
 import CreateBookUseCase from '../../../core/useCase/Book/CreateBookUseCase.js';
 import UpdateBookUseCase from '../../../core/useCase/Book/UpdateBookUseCase.js';
 import FindAllBooksUseCase from '../../../core/useCase/Book/FindAllBooksUseCase.js';
+import FindBookUseCase from '../../../core/useCase/Book/FindBookUseCase.js';
 import BookFilter from '../filter/BookFilter.js'
 import BookFilterMapper from '../filter/mapper/BookFilterMapper.js'
  
@@ -14,6 +15,7 @@ export default class BookController extends AbstractController {
         this.create = this.create.bind(this);
         this.update = this.update.bind(this);
         this.findAll = this.findAll.bind(this);
+        this.findById = this.findById.bind(this)
         this.bookMapper = new BookMapper();
         this.bookService = new BookService();
         this.bookFilterMapper = new BookFilterMapper();
@@ -24,6 +26,9 @@ export default class BookController extends AbstractController {
           bookService: this.bookService
         });
         this.findAllBookUseCase = new FindAllBooksUseCase({
+          bookService: this.bookService
+        });
+        this.findBookUseCase = new FindBookUseCase({
           bookService: this.bookService
         });
     }
@@ -71,6 +76,22 @@ export default class BookController extends AbstractController {
       }
 
       result.data = formattedResponseData;
+
+      res.status(result.status);
+      res.send(result.data);
+    }
+
+    async findById (req, res, next) {
+      const result = await this.findBookUseCase.find(req.query);
+
+      const formattedResponseData = [];
+
+
+      for (const data of result.data) {
+        formattedResponseData.push(data);
+      }
+
+      result.data = formattedResponseData[0];
 
       res.status(result.status);
       res.send(result.data);

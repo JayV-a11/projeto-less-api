@@ -12,6 +12,7 @@ router.use(middleware);
 router.post('/order', new OrderController().create);
 router.patch('/order', new OrderController().update);
 router.get('/order/all', new OrderController().getAll);
+router.get('/order/all/analise', new OrderController().getAllAnalise);
 router.get('/order', new OrderController().getByCostumer);
 router.post('/orderCard', new OrderController().createOrderCard);
 

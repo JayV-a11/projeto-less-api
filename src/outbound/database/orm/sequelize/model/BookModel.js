@@ -36,6 +36,14 @@ export default class BookModel extends AbstractModel {
                     inactive: {
                         type: DataTypes.BOOLEAN,
                     },
+                    quantidade: {
+                        type: DataTypes.NUMBER,
+                        allowNull: false
+                    },
+                    price: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
                     createdAt: {
                         type: DataTypes.DATE
                     },

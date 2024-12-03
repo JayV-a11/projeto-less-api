@@ -4,6 +4,7 @@ import CardOrderModel from "../model/CardOrderModel.js";
 export default class OrderRepository extends IRepository {
   constructor() {
     super(OrderModel.init());
+    this.sequelize = OrderModel.sequelize;
   }
 
   async save(order) {
@@ -16,12 +17,13 @@ export default class OrderRepository extends IRepository {
         valor: order.valor,
         frete: order.frete,
         pagamento: order.pagamento,
+        quantidade: order.quantidade,
       };
 
       return await this.connection.create(body);
     } catch (error) {
-      console.error("Erro ao salvar o cartão:", error);
-      throw new Error("Erro ao salvar o cartão.");
+      console.error("Erro", error);
+      throw new Error("Erro");
     }
   }
 
@@ -48,8 +50,8 @@ export default class OrderRepository extends IRepository {
         },
       });
     } catch (error) {
-      console.error("Erro ao salvar o cartão:", error);
-      throw new Error("Erro ao salvar o cartão.");
+      console.error("Erro", error);
+      throw new Error("Erro");
     }
   }
 
@@ -66,8 +68,8 @@ export default class OrderRepository extends IRepository {
 
       return res;
     } catch (error) {
-      console.error("Erro ao salvar o cartão:", error);
-      throw new Error("Erro ao salvar o cartão.");
+      console.error("Erro", error);
+      throw new Error("Erro");
     }
   }
 
@@ -75,22 +77,55 @@ export default class OrderRepository extends IRepository {
     try {
       return await this.connection.findAll();
     } catch (error) {
-      console.error("Erro ao salvar o cartão:", error);
-      throw new Error("Erro ao salvar o cartão.");
+      console.error("Erro", error);
+      throw new Error("Erro");
     }
   }
 
   async getOrdersByCostumer(order) {
     try {
-      console.log(order)
       return await this.connection.findAll({
         where: {
           customer_id: order.customer_id,
         },
       });
     } catch (error) {
-      console.error("Erro ao salvar o cartão:", error);
-      throw new Error("Erro ao salvar o cartão.");
+      console.error("Erro", error);
+      throw new Error("Erro");
+    }
+  }
+
+  async getOrdersForAnalisy(filter) {
+    try {
+
+  
+      const query = `
+          WITH orders_with_books AS (
+        SELECT 
+            o.quantidade,
+           CAST(REPLACE(o.valor, ',', '.') AS NUMERIC) AS valor_numeric,
+            b.name AS book_name,
+            b.editora AS book_editora,
+            o.created_at AS data_venda
+        FROM "Orders" o
+        INNER JOIN "Books" b ON o.book_id = b.id
+
+       WHERE 
+             o.created_at >= ${filter.where.start} AND o.created_at <= ${filter.where.end}
+    )
+    SELECT 
+        quantidade,
+        valor_numeric AS valor,
+        book_name,
+        book_editora,
+        data_venda
+    FROM orders_with_books;
+  `;
+      const [result] = await this.sequelize.query(query);
+      return result;
+    } catch (error) {
+      console.error("Erro", error);
+      throw new Error("Erro");
     }
   }
 }

@@ -5,6 +5,7 @@ import CreateOrderCartUseCase from '../../../core/useCase/Order/CreateOrderCartU
 import UpdateOrderUseCase from '../../../core/useCase/Order/UpdateOrderUseCase.js';
 import GetOrderUseCase from '../../../core/useCase/Order/GetOrderUseCase.js';
 import GetOrderByCostumerUseCase from '../../../core/useCase/Order/GetOrderByCostumerUseCase.js';
+import GetOrderForAnaliseUseCase from '../../../core/useCase/Order/GetOrderForAnaliseUseCase.js';
 
 export default class CartController extends AbstractController {
     constructor () {
@@ -14,7 +15,11 @@ export default class CartController extends AbstractController {
         this.getAll = this.getAll.bind(this);
         this.getByCostumer = this.getByCostumer.bind(this);
         this.createOrderCard = this.createOrderCard.bind(this);
+        this.getAllAnalise = this.getAllAnalise.bind(this);
         this.orderService = new OrderService();
+        this.getOrderForAnaliseUseCase = new GetOrderForAnaliseUseCase({
+          orderService: this.orderService
+        })
         this.createOrderUseCase = new CreateOrderUseCase({
           orderService: this.orderService
         });
@@ -50,6 +55,20 @@ export default class CartController extends AbstractController {
     async getAll (req, res, next) {
       const result = await this.getOrderUseCase.get();
 
+      const formattedResponseData = [];
+
+      for (const data of result.data) {
+        formattedResponseData.push(data);
+      }
+
+      result.data = formattedResponseData;
+      res.status(result.status);
+      res.send(result.data);
+    }
+
+    async getAllAnalise (req, res, next) {
+      const filter = req.query;
+      const result = await this.getOrderForAnaliseUseCase.get(filter);
       const formattedResponseData = [];
 
       for (const data of result.data) {

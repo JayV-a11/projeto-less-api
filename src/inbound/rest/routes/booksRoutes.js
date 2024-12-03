@@ -9,7 +9,8 @@ const middleware = (req, res, next) => {
 
 router.use(middleware);
 
-router.get('/book', new BookController().findAll);
+router.get('/books', new BookController().findAll);
+router.get('/book', new BookController().findById);
 router.post('/book', new BookController().create);
 router.patch('/book', new BookController().update);
 

@@ -33,7 +33,7 @@ export default class CupomController extends AbstractController {
 
       result.data = formattedResponseData;
       res.status(result.status);
-      res.send(result.data);
+      res.send(result.data[0]);
     }
 
     async update (req, res, next) {

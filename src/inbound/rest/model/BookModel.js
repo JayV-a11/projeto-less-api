@@ -9,6 +9,8 @@ export default class BookModel extends AbstractModel {
         ano = '',
         edicao = '',
         inactive = false,
+        quantidade = 0,
+        price = '',
     } = {}) {
         super();
         this.id = id;
@@ -18,6 +20,8 @@ export default class BookModel extends AbstractModel {
         this.edicao = edicao;
         this.autor = autor;
         this.inactive = inactive;
+        this.quantidade = quantidade;
+        this.price = price;
     }
 
 }

@@ -17,7 +17,7 @@ export default class UpdateCartItemUseCase extends AbstractUseCase {
         ]
     }
 
-    async deleteItem(cart) {
+    async updateItem(cart) {
         return await this.executeStrategies(cart, new Result());
     }
 }

@@ -1,7 +1,7 @@
 import AbstractStrategy from '../AbstractStrategy.js';
 import Result from '../../util/Result.js';
 
-export default class GetOrderByCostumerStrategy extends AbstractStrategy {
+export default class GetOrderStrategy extends AbstractStrategy {
     constructor ({
         orderService = null,
         result = new Result()
@@ -11,18 +11,18 @@ export default class GetOrderByCostumerStrategy extends AbstractStrategy {
         this.orderService = orderService;
     }
 
-    async execute(cart, result = this.result) {
+    async execute(filter, result = this.result) {
         try {
-            cart = await this.orderService.getOrdersByCostumer(cart);
+            const res = await this.orderService.getOrdersForAnalisy(filter);
             result.status = 201;
-            result.data = cart;
+            result.data = res;
         } catch (error) {
             result.status = 500;
             result.error.push(error.message);
         }
 
         return {
-            entity: cart,
+            entity: filter,
             result
         };
     }

@@ -52,7 +52,6 @@ export default class CartController extends AbstractController {
       const result = await this.addCartItemUseCase.addItem(cart);
 
       const formattedResponseData = [];
-console.log(result, 'resit')
       for (const data of result.data) {
         formattedResponseData.push(data);
       }

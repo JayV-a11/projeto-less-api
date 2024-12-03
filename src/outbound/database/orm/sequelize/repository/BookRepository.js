@@ -14,12 +14,18 @@ export default class BookRepository extends IBookRepository {
         ano: book.ano,
         edicao: book.edicao,
         inactive: book.inactive,
+        quantidade: book.quantidade,
+        price: book.price,
     }
 
     return await this.connection.create(body);
   }
 
   async findAll(filter) {
+    return await this.connection.findAll(filter);
+  }
+
+  async findOne(filter) {
     return await this.connection.findAll(filter);
   }
 }

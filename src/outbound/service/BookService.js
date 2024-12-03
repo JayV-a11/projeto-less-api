@@ -9,6 +9,7 @@ export default class CostumerService extends IBookService {
     this.createBook = this.createBook.bind(this);
     this.updateBook = this.updateBook.bind(this);
     this.findAllBooks = this.findAllBooks.bind(this);
+    this.find = this.find.bind(this);
     this.findOne = this.findOne.bind(this);
     this.bookRepository = new BookRepository();
     this.bookFilterMapper = new BookFilterMapper();
@@ -45,6 +46,18 @@ export default class CostumerService extends IBookService {
     filter = bookFilter.mountFilter();
 
     const bookModel = await this.bookRepository.findOne(filter);
+
+    const bookMapper = this.bookMapper.adapt(bookModel);
+
+    return bookMapper;
+  }
+
+  async find(filter) {
+    const bookModel = await this.bookRepository.findOne({
+      where: {
+        id: filter.id
+      },
+    });
 
     const bookMapper = this.bookMapper.adapt(bookModel);
 

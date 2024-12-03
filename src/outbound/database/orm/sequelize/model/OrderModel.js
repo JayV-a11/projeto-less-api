@@ -33,6 +33,10 @@ export default class CostumerModel extends AbstractModel {
                         type: DataTypes.STRING,
                         allowNull: false
                     },
+                    quantidade: {
+                        type: DataTypes.NUMBER,
+                        allowNull: false
+                    },
                     frete: {
                         type: DataTypes.STRING,
                         allowNull: false

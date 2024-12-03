@@ -7,7 +7,7 @@ import cardRoutes from './routes/cardRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import cupomRoutes from './routes/cupomRoutes.js';
-
+import faqAIRoutes from './routes/faqAIRoutes.js';
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -36,6 +36,7 @@ class RouterController {
     this.express.use(`/`, cartRoutes);
     this.express.use(`/`, orderRoutes);
     this.express.use(`/`, cupomRoutes);
+    this.express.use(`/`, faqAIRoutes);
   }
 }
 

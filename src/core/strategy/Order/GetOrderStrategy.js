@@ -15,7 +15,7 @@ export default class GetOrderStrategy extends AbstractStrategy {
         try {
             cart = await this.orderService.getOrders();
             result.status = 201;
-            result.data = [cart];
+            result.data = cart;
         } catch (error) {
             result.status = 500;
             result.error.push(error.message);
