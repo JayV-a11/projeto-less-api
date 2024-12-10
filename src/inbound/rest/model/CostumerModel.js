@@ -10,6 +10,7 @@ export default class CostumerModel extends AbstractModel {
     phone = "",
     password = "",
     ranking = null,
+    gender = "",
     inactive = false,
   } = {}) {
     super();
@@ -22,6 +23,7 @@ export default class CostumerModel extends AbstractModel {
     this.phone = phone;
     this.password = password;
     this.ranking = ranking;
+    this.gender = gender;
     this.inactive = inactive;
   }
 }

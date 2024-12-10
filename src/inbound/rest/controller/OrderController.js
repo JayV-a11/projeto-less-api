@@ -6,6 +6,7 @@ import UpdateOrderUseCase from '../../../core/useCase/Order/UpdateOrderUseCase.j
 import GetOrderUseCase from '../../../core/useCase/Order/GetOrderUseCase.js';
 import GetOrderByCostumerUseCase from '../../../core/useCase/Order/GetOrderByCostumerUseCase.js';
 import GetOrderForAnaliseUseCase from '../../../core/useCase/Order/GetOrderForAnaliseUseCase.js';
+import CartService from '../../../outbound/service/CartService.js';
 
 export default class CartController extends AbstractController {
     constructor () {
@@ -17,11 +18,13 @@ export default class CartController extends AbstractController {
         this.createOrderCard = this.createOrderCard.bind(this);
         this.getAllAnalise = this.getAllAnalise.bind(this);
         this.orderService = new OrderService();
+        this.cartService = new CartService();
         this.getOrderForAnaliseUseCase = new GetOrderForAnaliseUseCase({
           orderService: this.orderService
         })
         this.createOrderUseCase = new CreateOrderUseCase({
-          orderService: this.orderService
+          orderService: this.orderService,
+          cartService: this.cartService
         });
         this.getOrderUseCase = new GetOrderUseCase({
           orderService: this.orderService

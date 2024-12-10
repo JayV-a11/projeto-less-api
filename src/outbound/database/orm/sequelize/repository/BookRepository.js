@@ -21,6 +21,19 @@ export default class BookRepository extends IBookRepository {
     return await this.connection.create(body);
   }
 
+  async update(cartItem) {
+    try {
+      return await this.connection.update(cartItem, {
+        where: {
+          id: cartItem.id,
+        },
+      });
+    } catch (error) {
+      console.error("Erro ao salvar o cartão:", error);
+      throw new Error("Erro ao salvar o cartão."); 
+    }
+  }
+
   async findAll(filter) {
     return await this.connection.findAll(filter);
   }

@@ -10,6 +10,7 @@ export default class CartService extends ICartService {
     this.addItem = this.addItem.bind(this);
     this.updateItem = this.updateItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.clearCart = this.clearCart.bind(this);
     this.getCartAllItemsById = this.getCartAllItemsById.bind(this);
     this.findAllById = this.findAllById.bind(this);
     this.findByUser = this.findByUser.bind(this);
@@ -28,11 +29,24 @@ export default class CartService extends ICartService {
   }
 
   async updateItem(cart) {
-     await this.cartRepository.updateItem(cart);
+    await this.cartRepository.updateItem(cart);
+  }
+
+  async clearCart(cart) {
+
+    const carts = await this.cartRepository.findItems({
+      where: {
+        cart_id: cart.cart_id,
+      },
+    });
+
+    if(carts?.length > 0) {
+      carts.map(async(item) => this.cartRepository.deleteItem(item))
+    }
   }
 
   async deleteItem(cart) {
-     await this.cartRepository.deleteItem(cart);
+    await this.cartRepository.deleteItem(cart);
   }
 
   async getCartAllItemsById(cart) {

@@ -47,6 +47,7 @@ export default class CartRepository extends ICardRepository {
 
   async deleteItem(cartItem) {
     try {
+      console.log(cartItem, `teste`)
       if (!cartItem.id) {
         throw new Error("ID do cartão não fornecido.");
       }

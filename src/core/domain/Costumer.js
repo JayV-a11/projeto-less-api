@@ -11,6 +11,7 @@ export default class Costumer extends AbstractEntity {
     phone = "",
     password = "",
     ranking = null,
+    gender = "",
     inactive = false,
   } = {}) {
     super();
@@ -23,6 +24,7 @@ export default class Costumer extends AbstractEntity {
     this.phone = phone;
     this.password = password;
     this.ranking = ranking;
+    this.gender = gender;
     this.inactive = inactive;
   }
 }

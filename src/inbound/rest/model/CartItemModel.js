@@ -6,6 +6,7 @@ export default class CartItemModel extends AbstractModel {
     book_id = null,
     quantity = 0,
     value = 0.0,
+    oldQuantity = 0,
   } = {}) {
     super();
     this.id = id;
@@ -13,5 +14,6 @@ export default class CartItemModel extends AbstractModel {
     this.book_id = book_id;
     this.quantity = quantity;
     this.value = value;
+    this.oldQuantity = oldQuantity;
   }
 }

@@ -8,6 +8,7 @@ export default class CostumerService extends IBookService {
     super();
     this.createBook = this.createBook.bind(this);
     this.updateBook = this.updateBook.bind(this);
+    this.updatePurchasedBook = this.updatePurchasedBook.bind(this);
     this.findAllBooks = this.findAllBooks.bind(this);
     this.find = this.find.bind(this);
     this.findOne = this.findOne.bind(this);
@@ -21,11 +22,17 @@ export default class CostumerService extends IBookService {
     return this.bookMapper.adapt(bookModel);
   }
 
-  async updateBook(book) {
+  async updatePurchasedBook(book) {
     const bookModel = await this.bookRepository.update(book);
     return this.bookMapper.adapt(bookModel);
   }
 
+  
+  async updateBook(book) {
+    const bookModel = await this.bookRepository.update(book);
+    return this.bookMapper.adapt(bookModel);
+  }
+  
   async findAllBooks(filter) {
     const bookFilter = this.bookFilterMapper.adapt(filter);
     filter = bookFilter.mountFilter();

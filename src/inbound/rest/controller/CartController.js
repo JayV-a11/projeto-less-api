@@ -1,6 +1,7 @@
 import AbstractController from './AbstractController.js';
 import CartModel from '../model/CartModel.js';
 import CartService from '../../../outbound/service/CartService.js';
+import BookService from '../../../outbound/service/BookService.js';
 import CartMapper from '../model/mapper/CartMapper.js';
 import CreateCartUseCase from '../../../core/useCase/Cart/CreateCartUseCase.js';
 import CartFilter from '../filter/CartFilter.js'
@@ -25,6 +26,7 @@ export default class CartController extends AbstractController {
         this.cartMapper = new CartMapper();
         this.cartItemMapper = new CartItemMapper();
         this.cartService = new CartService();
+        this.bookService = new BookService();
         this.cartFilterMapper = new CartFilterMapper();
         this.createCartUseCase = new CreateCartUseCase({
           cartService: this.cartService
@@ -33,13 +35,15 @@ export default class CartController extends AbstractController {
           cartService: this.cartService
         });
         this.addCartItemUseCase = new AddCartItemUseCase({
-          cartService: this.cartService
+          cartService: this.cartService,
+          bookService: this.bookService
         })
         this.updateCartItemUseCase = new UpdateCartItemUseCase({
           cartService: this.cartService
         })
         this.deleteCartItemUseCase = new DeleteCartItemUseCase({
-          cartService: this.cartService
+          cartService: this.cartService,
+          bookService: this.bookService
         })
         this.findAllByCartUseCase = new FindAllByCartUseCase({
           cartService: this.cartService

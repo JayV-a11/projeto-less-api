@@ -17,6 +17,7 @@ export default class CostumerRepository extends ICostumerRepository {
       phone: costumer.phone,
       password: await bcrypt.hash(costumer.password, 8),
       ranking: costumer.ranking,
+      gender: costumer.gender,
       inactive: costumer.inactive,
     });
   }
@@ -41,6 +42,8 @@ export default class CostumerRepository extends ICostumerRepository {
     if (costumer.password !== null && costumer.password !== "") {
       data.password = await bcrypt.hash(costumer.password, 8);
     }
+
+    data.updated_at = new Date();
 
     return await this.connection.update(data, {
       where: {

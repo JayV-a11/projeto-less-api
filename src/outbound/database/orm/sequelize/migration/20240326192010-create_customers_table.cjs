@@ -42,6 +42,10 @@ module.exports = {
                     type: Sequelize.INTEGER,
                     allowNull: false
                 },
+                gender: {
+                    type: Sequelize.STRING,
+                    allowNull: false
+                },
                 inactive: {
                     type: Sequelize.BOOLEAN,
                     allowNull: false,

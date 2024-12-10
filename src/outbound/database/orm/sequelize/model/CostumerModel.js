@@ -45,6 +45,10 @@ export default class CostumerModel extends AbstractModel {
                         type: DataTypes.INTEGER,
                         allowNull: false
                     },
+                    gender: {
+                        type: DataTypes.STRING,
+                        allowNull: false
+                    },
                     inactive: {
                         type: DataTypes.BOOLEAN,
                         allowNull: false,
